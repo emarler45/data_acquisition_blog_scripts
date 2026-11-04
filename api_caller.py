@@ -1,6 +1,3 @@
-from datetime import datetime as dt
-
-import pandas as pd
 import vlrdevapi as vlr
 
 
@@ -17,15 +14,17 @@ def getAmericasTeams() -> dict:
         teamsDict[team.id] = dataDict
     return teamsDict
 
-def getRoundsWonAndLost(match: vlr.SeriesNamespace, team_id: int) -> tuple:
+def getRoundsWonAndLost(match: vlr.SeriesMatchNamespace, team_id: int) -> tuple:
     maps: list = match.info().games
     roundsWon = 0
     roundsLost = 0
     isTeam1 = 1 if match.info().team1.id == team_id else 0
     isTeam2 = 1 if isTeam1 == 0 else 0
     for map in maps:
+        if map.played  == False:
+            break
         roundsWon += (map.team1_score * isTeam1) + (map.team2_score * isTeam2)
-        roundsLost += (map.team1_score * isTeam1) + (map.team2_score * isTeam2)
+        roundsLost += (map.team2_score * isTeam1) + (map.team1_score * isTeam2)
     return roundsWon, roundsLost
 
 
@@ -38,6 +37,7 @@ def getTeamMatchHistory(teams: dict) -> dict:
             if match.datetime.year != 2026:
                 break
             matchDict = {}
+            print(f"Current match: {match.event}, {currTeam.info().name} vs. {match.opponent.name}, {match.datetime}")
             matchDict["team_id"] = currTeam.info().id
             matchDict["date"] = match.datetime
             matchDict["team"] = currTeam.info().name
@@ -47,7 +47,7 @@ def getTeamMatchHistory(teams: dict) -> dict:
             matchDict["maps_won"] = match.team_score
             matchDict["maps_lost"] = match.opponent_score
             matchMaps = vlr.series(match.match_id)
-            matchDict["rounds_won"], matchDict["rounds_lost"] = getRoundsWonAndLost(matchMaps, currTeam.info.id)
+            matchDict["rounds_won"], matchDict["rounds_lost"] = getRoundsWonAndLost(matchMaps, currTeam.info().id)
             fullDict[currTeam.info.id] = matchDict
 
     return fullDict
