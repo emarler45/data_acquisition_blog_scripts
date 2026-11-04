@@ -5,20 +5,23 @@ def getAmericasTeams() -> dict:
     kickoff = vlr.event(2682)
     teamList = kickoff.teams(stage='main-event').stages[0].teams
     teamsDict = {}
+    index = 0
     for team in teamList:
+        index += 1
         dataDict = {}
+        dataDict["id"] = team.id
         dataDict["name"] = team.name
         dataDict["roster"] = []
         for player in team.players:
             dataDict["roster"].append(player.name)
-        teamsDict[team.id] = dataDict
+        teamsDict[index] = dataDict
     return teamsDict
 
-def getRoundsWonAndLost(match: vlr.SeriesMatchNamespace, team_id: int) -> tuple:
-    maps: list = match.info().games
+def getRoundsWonAndLost(match, team_id: int) -> tuple:
+    maps: list = match.games
     roundsWon = 0
     roundsLost = 0
-    isTeam1 = 1 if match.info().team1.id == team_id else 0
+    isTeam1 = 1 if match.team1.id == team_id else 0
     isTeam2 = 1 if isTeam1 == 0 else 0
     for map in maps:
         if map.played  == False:
@@ -30,25 +33,27 @@ def getRoundsWonAndLost(match: vlr.SeriesMatchNamespace, team_id: int) -> tuple:
 
 def getTeamMatchHistory(teams: dict) -> dict:
     fullDict = {}
-    for team in teams:
-        currTeam = vlr.team(team)
+    for idx in teams:
+        team_id = teams[idx]["id"]
+        currTeam = vlr.team(team_id)
+        teamInfo = currTeam.info()
         past_matches = currTeam.completed_matches().matches
         for match in past_matches:
             if match.datetime.year != 2026:
                 break
             matchDict = {}
-            print(f"Current match: {match.event}, {currTeam.info().name} vs. {match.opponent.name}, {match.datetime}")
-            matchDict["team_id"] = currTeam.info().id
+            print(f"Current match: {match.event}, {teamInfo.name} vs. {match.opponent.name}, {match.datetime}")
+            matchDict["team_id"] = teamInfo.id
             matchDict["date"] = match.datetime
-            matchDict["team"] = currTeam.info().name
+            matchDict["team"] = teamInfo.name
             matchDict["event"] = match.event
             matchDict["opponent"] = match.opponent.name
             matchDict["winner"] = match.is_win
             matchDict["maps_won"] = match.team_score
             matchDict["maps_lost"] = match.opponent_score
             matchMaps = vlr.series(match.match_id)
-            matchDict["rounds_won"], matchDict["rounds_lost"] = getRoundsWonAndLost(matchMaps, currTeam.info().id)
-            fullDict[currTeam.info.id] = matchDict
+            matchDict["rounds_won"], matchDict["rounds_lost"] = getRoundsWonAndLost(matchMaps.info(), teamInfo.id)
+            fullDict[teamInfo.id] = matchDict
 
     return fullDict
 
@@ -56,16 +61,18 @@ def getTeamMatchHistory(teams: dict) -> dict:
 def getRosterMoves(teams: dict) -> dict:
     movesDict = {}
     i = 0
-    for team in teams:
-        currTeam = vlr.team(team)
+    for idx in teams:
+        team_id = teams[idx]["id"]
+        currTeam = vlr.team(team_id)
+        teamInfo = currTeam.info()
         movesList = currTeam.transactions().transactions
         for move in movesList:
             i += 1
             moveDict = {}
             if move.date.year != 2026 or move.position != "player":
                 break
-            moveDict["team_id"] = currTeam.info().id
-            moveDict["team"] = currTeam.info().name
+            moveDict["team_id"] = teamInfo.id
+            moveDict["team"] = teamInfo.name
             moveDict["date"] = move.date
             moveDict["player_name"] = move.player.ign
             moveDict["action_type"] = str(move.action)
