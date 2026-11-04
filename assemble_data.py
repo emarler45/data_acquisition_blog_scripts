@@ -8,13 +8,16 @@ import api_caller
 def main():
     americasTeams = api_caller.getAmericasTeams()
     teamsdf = pd.DataFrame.from_dict(americasTeams, orient='index')
-    print(teamsdf.head())
+    # print(teamsdf.head())
     teamMatches = api_caller.getTeamMatchHistory(americasTeams)
     matchesdf = pd.DataFrame.from_dict(teamMatches, orient='index')
-    print(matchesdf.head())
+    # print(matchesdf.head())
     teamRosterMoves = api_caller.getRosterMoves(americasTeams)
     rosterMovesdf = pd.DataFrame.from_dict(teamRosterMoves, orient='index')
-    print(rosterMovesdf.head())
+    # print(rosterMovesdf.head())
+    teamsdf.to_csv('data/teams.csv')
+    matchesdf.to_csv('data/matches.csv')
+    rosterMovesdf.to_csv('data/moves.csv')
 
 
 if __name__ == "__main__":

@@ -67,16 +67,20 @@ def getRosterMoves(teams: dict) -> dict:
         teamInfo = currTeam.info()
         movesList = currTeam.transactions().transactions
         for move in movesList:
+            if move.date.year < 2026:
+                break
+            if move.date.year > 2026 or move.position != "Player":
+                continue
             i += 1
             moveDict = {}
-            if move.date.year != 2026 or move.position != "player":
-                break
             moveDict["team_id"] = teamInfo.id
             moveDict["team"] = teamInfo.name
             moveDict["date"] = move.date
             moveDict["player_name"] = move.player.ign
             moveDict["action_type"] = str(move.action)
             movesDict[i] = moveDict
+    
+    
     return movesDict
         
 
