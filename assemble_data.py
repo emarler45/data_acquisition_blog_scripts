@@ -15,9 +15,9 @@ def main():
     teamRosterMoves = api_caller.getRosterMoves(americasTeams)
     rosterMovesdf = pd.DataFrame.from_dict(teamRosterMoves, orient='index')
     # print(rosterMovesdf.head())
-    teamsdf.to_csv('data/teams.csv')
-    matchesdf.to_csv('data/matches.csv')
-    rosterMovesdf.to_csv('data/moves.csv')
+    teamsdf.to_csv('data/teams.csv', index=False)
+    matchesdf.to_csv('data/matches.csv', index=False)
+    rosterMovesdf.to_csv('data/moves.csv', index=False)
 
 
 if __name__ == "__main__":

@@ -33,6 +33,7 @@ def getRoundsWonAndLost(match, team_id: int) -> tuple:
 
 def getTeamMatchHistory(teams: dict) -> dict:
     fullDict = {}
+    i = 0
     for idx in teams:
         team_id = teams[idx]["id"]
         currTeam = vlr.team(team_id)
@@ -41,6 +42,7 @@ def getTeamMatchHistory(teams: dict) -> dict:
         for match in past_matches:
             if match.datetime.year != 2026:
                 break
+            i += 1
             matchDict = {}
             print(f"Current match: {match.event}, {teamInfo.name} vs. {match.opponent.name}, {match.datetime}")
             matchDict["team_id"] = teamInfo.id
@@ -53,7 +55,7 @@ def getTeamMatchHistory(teams: dict) -> dict:
             matchDict["maps_lost"] = match.opponent_score
             matchMaps = vlr.series(match.match_id)
             matchDict["rounds_won"], matchDict["rounds_lost"] = getRoundsWonAndLost(matchMaps.info(), teamInfo.id)
-            fullDict[teamInfo.id] = matchDict
+            fullDict[i] = matchDict
 
     return fullDict
 

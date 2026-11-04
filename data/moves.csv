@@ -1,0 +1,94 @@
+team_id,team,date,player_name,action_type
+188,Cloud9,2026-11-03 00:00:00+00:00,Jackk,TransactionAction.Leave
+188,Cloud9,2026-11-02 00:00:00+00:00,GLYPH,TransactionAction.Join
+188,Cloud9,2026-11-02 00:00:00+00:00,OXY,TransactionAction.Leave
+188,Cloud9,2026-11-02 00:00:00+00:00,Zellsis,TransactionAction.Leave
+188,Cloud9,2026-10-19 00:00:00+00:00,v1c,TransactionAction.Inactive
+188,Cloud9,2026-10-18 00:00:00+00:00,Jackk,TransactionAction.Inactive
+188,Cloud9,2026-07-10 00:00:00+00:00,v1c,TransactionAction.Join
+188,Cloud9,2026-07-10 00:00:00+00:00,Notexxd,TransactionAction.Leave
+188,Cloud9,2026-05-29 00:00:00+00:00,FireBallOps,TransactionAction.Join
+188,Cloud9,2026-05-29 00:00:00+00:00,Xeppaa,TransactionAction.Leave
+188,Cloud9,2026-05-08 00:00:00+00:00,Notexxd,TransactionAction.Join
+188,Cloud9,2026-05-08 00:00:00+00:00,v1c,TransactionAction.Leave
+188,Cloud9,2026-05-02 00:00:00+00:00,Jackk,TransactionAction.Join
+188,Cloud9,2026-05-01 00:00:00+00:00,penny,TransactionAction.Leave
+5248,Evil Geniuses,2026-10-19 00:00:00+00:00,supamen,TransactionAction.Inactive
+5248,Evil Geniuses,2026-10-19 00:00:00+00:00,dgzin,TransactionAction.Inactive
+5248,Evil Geniuses,2026-10-19 00:00:00+00:00,bao,TransactionAction.Inactive
+5248,Evil Geniuses,2026-10-19 00:00:00+00:00,Paincakes,TransactionAction.Inactive
+5248,Evil Geniuses,2026-10-19 00:00:00+00:00,zerona,TransactionAction.Inactive
+5248,Evil Geniuses,2026-07-06 00:00:00+00:00,C0M,TransactionAction.Leave
+5248,Evil Geniuses,2026-07-06 00:00:00+00:00,Okeanos,TransactionAction.Leave
+5248,Evil Geniuses,2026-05-07 00:00:00+00:00,Paincakes,TransactionAction.Join
+5248,Evil Geniuses,2026-05-07 00:00:00+00:00,zerona,TransactionAction.Join
+5248,Evil Geniuses,2026-05-07 00:00:00+00:00,C0M,TransactionAction.Inactive
+5248,Evil Geniuses,2026-05-07 00:00:00+00:00,Okeanos,TransactionAction.Inactive
+2406,FURIA,2026-10-30 00:00:00+00:00,koalanoob,TransactionAction.Leave
+2406,FURIA,2026-10-30 00:00:00+00:00,C0M,TransactionAction.Leave
+2406,FURIA,2026-10-30 00:00:00+00:00,eeiu,TransactionAction.Leave
+2406,FURIA,2026-10-19 00:00:00+00:00,basic,TransactionAction.Leave
+2406,FURIA,2026-10-19 00:00:00+00:00,Shyy,TransactionAction.Leave
+2406,FURIA,2026-10-19 00:00:00+00:00,basic,TransactionAction.Inactive
+2406,FURIA,2026-10-19 00:00:00+00:00,artzin,TransactionAction.Inactive
+2406,FURIA,2026-10-19 00:00:00+00:00,artzin,TransactionAction.Leave
+2406,FURIA,2026-09-28 00:00:00+00:00,C0M,TransactionAction.Inactive
+2406,FURIA,2026-09-25 00:00:00+00:00,koalanoob,TransactionAction.Inactive
+2406,FURIA,2026-07-19 00:00:00+00:00,C0M,TransactionAction.Join
+2406,FURIA,2026-07-19 00:00:00+00:00,eeiu,TransactionAction.Inactive
+2406,FURIA,2026-07-02 00:00:00+00:00,Shyy,TransactionAction.Join
+2406,FURIA,2026-07-01 00:00:00+00:00,basic,TransactionAction.Join
+2406,FURIA,2026-07-01 00:00:00+00:00,basic,TransactionAction.Leave
+2406,FURIA,2026-06-19 00:00:00+00:00,alym,TransactionAction.Leave
+2406,FURIA,2026-06-19 00:00:00+00:00,nerve,TransactionAction.Leave
+2355,KRÜ Esports,2026-11-04 00:00:00+00:00,Dantedeu5,TransactionAction.Leave
+2355,KRÜ Esports,2026-11-04 00:00:00+00:00,saadhak,TransactionAction.Leave
+2355,KRÜ Esports,2026-10-28 00:00:00+00:00,heat,TransactionAction.Leave
+2355,KRÜ Esports,2026-10-28 00:00:00+00:00,mwzera,TransactionAction.Leave
+2355,KRÜ Esports,2026-09-23 00:00:00+00:00,mwzera,TransactionAction.Inactive
+2355,KRÜ Esports,2026-09-15 00:00:00+00:00,Dantedeu5,TransactionAction.Inactive
+2355,KRÜ Esports,2026-09-10 00:00:00+00:00,saadhak,TransactionAction.Inactive
+2355,KRÜ Esports,2026-06-26 00:00:00+00:00,heat,TransactionAction.Join
+2355,KRÜ Esports,2026-06-24 00:00:00+00:00,silentzz,TransactionAction.Leave
+2359,LEVIATÁN,2026-01-09 00:00:00+00:00,PxS,TransactionAction.Join
+6961,LOUD,2026-09-15 00:00:00+00:00,cauanzin,TransactionAction.Leave
+6961,LOUD,2026-07-16 00:00:00+00:00,DaviH,TransactionAction.Join
+6961,LOUD,2026-07-14 00:00:00+00:00,Virtyy,TransactionAction.Leave
+6961,LOUD,2026-05-04 00:00:00+00:00,pANcada,TransactionAction.Leave
+6961,LOUD,2026-03-31 00:00:00+00:00,pANcada,TransactionAction.Inactive
+6961,LOUD,2026-03-04 00:00:00+00:00,erde,TransactionAction.Join
+7386,MIBR,2026-10-23 00:00:00+00:00,Mazino,TransactionAction.Inactive
+7386,MIBR,2026-10-23 00:00:00+00:00,zekken,TransactionAction.Inactive
+7386,MIBR,2026-10-23 00:00:00+00:00,Verno,TransactionAction.Inactive
+7386,MIBR,2026-10-23 00:00:00+00:00,aspas,TransactionAction.Inactive
+7386,MIBR,2026-09-21 00:00:00+00:00,tex,TransactionAction.Inactive
+1034,NRG,2026-11-03 00:00:00+00:00,brawk,TransactionAction.Leave
+1034,NRG,2026-10-21 00:00:00+00:00,keiko,TransactionAction.Leave
+2,Sentinels,2026-11-03 00:00:00+00:00,brawk,TransactionAction.Join
+2,Sentinels,2026-11-02 00:00:00+00:00,OXY,TransactionAction.Join
+2,Sentinels,2026-10-30 00:00:00+00:00,Jerrwin,TransactionAction.Leave
+2,Sentinels,2026-10-30 00:00:00+00:00,JonahP,TransactionAction.Leave
+2,Sentinels,2026-09-15 00:00:00+00:00,Jerrwin,TransactionAction.Inactive
+2,Sentinels,2026-03-24 00:00:00+00:00,Jerrwin,TransactionAction.Join
+2,Sentinels,2026-03-20 00:00:00+00:00,Kyu,TransactionAction.Leave
+2,Sentinels,2026-03-11 00:00:00+00:00,N4RRATE,TransactionAction.Leave
+2,Sentinels,2026-03-06 00:00:00+00:00,JonahP,TransactionAction.Join
+11058,G2 Esports,2026-11-03 00:00:00+00:00,BABYBAY,TransactionAction.Leave
+11058,G2 Esports,2026-10-27 00:00:00+00:00,valyn,TransactionAction.Leave
+11058,G2 Esports,2026-03-05 00:00:00+00:00,JonahP,TransactionAction.Leave
+427,ENVY,2026-11-02 00:00:00+00:00,GLYPH,TransactionAction.Leave
+427,ENVY,2026-09-16 00:00:00+00:00,nightz,TransactionAction.Inactive
+427,ENVY,2026-09-09 00:00:00+00:00,Demon1,TransactionAction.Inactive
+427,ENVY,2026-09-09 00:00:00+00:00,GLYPH,TransactionAction.Inactive
+427,ENVY,2026-09-09 00:00:00+00:00,keznit,TransactionAction.Inactive
+427,ENVY,2026-09-08 00:00:00+00:00,Rossy,TransactionAction.Inactive
+427,ENVY,2026-07-15 00:00:00+00:00,nightz,TransactionAction.Join
+427,ENVY,2026-06-30 00:00:00+00:00,P0PPIN,TransactionAction.Inactive
+427,ENVY,2026-06-30 00:00:00+00:00,GLYPH,TransactionAction.Join
+427,ENVY,2026-05-10 00:00:00+00:00,Inspire,TransactionAction.Leave
+427,ENVY,2026-04-16 00:00:00+00:00,canezerra,TransactionAction.Leave
+427,ENVY,2026-02-06 00:00:00+00:00,Inspire,TransactionAction.Inactive
+427,ENVY,2026-02-05 00:00:00+00:00,Demon1,TransactionAction.Join
+427,ENVY,2026-01-13 00:00:00+00:00,ion,TransactionAction.Inactive
+427,ENVY,2026-01-09 00:00:00+00:00,Rossy,TransactionAction.Join
+427,ENVY,2026-01-09 00:00:00+00:00,keznit,TransactionAction.Join
