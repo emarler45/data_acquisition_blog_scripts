@@ -35,14 +35,15 @@ def consolidateMoves(dframe):
     df["changeSeries"] = df["action_type"].map({"Join": "+", "Leave": "-", "Inactive": "-"}) + df["player_name"]
     df["date"] = pd.to_datetime(df["date"]).dt.date
     df["month"] = pd.to_datetime(df["date"]).dt.month
-    df = df.groupby(["month", "team"], as_index=False).agg(date=("date", "max"),changes=("changeSeries", ", ".join))
-    df = df[df["changes"].str.match]
+    df = df.groupby(["month", "team"], as_index=False).agg(team_id=("team_id","max"),date=("date", "max"),changes=("changeSeries", ", ".join))
+    df = df[df["changes"].str.match(r"(\+\w+, -\w+|-\w+, \+\w+)")]
     return df
 
 def main():
     clean_movesdf = cleanMoves(movesdf)
     yearLong = getYearLongStats(matchesdf)
     rosterSummary = getRosterSummary(clean_movesdf)
+    realMoves = consolidateMoves(clean_movesdf)
 
 
 
