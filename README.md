@@ -12,4 +12,4 @@ This file uses the functions built in api_caller to collect the desired data and
 
 ## analyze_data
 
-This file uses the pandas package to read in, clean, and do some EDA on the collected data. 
+This file uses the pandas package to read in, clean, and do some EDA on the collected data. The EDA include gathering summaries on winrates, splitting team times by their iterations, and then graphing these winrates.
