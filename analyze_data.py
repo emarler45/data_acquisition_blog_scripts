@@ -1,18 +1,24 @@
 import pandas as pd
 import datetime as dt
+import matplotlib.pyplot as plt
+
 
 teamsdf = pd.read_csv('data/teams.csv')
 matchesdf = pd.read_csv('data/matches.csv')
 movesdf = pd.read_csv('data/moves.csv')
 
 def getYearLongStats(df):
-    yearLongWinRate = df.groupby("team_id").agg(
+    yearLongWinRate = df.groupby("team_id", as_index=False).agg(
         Name=pd.NamedAgg(column="team", aggfunc="max"),
         matches_played=pd.NamedAgg(column="team", aggfunc="count"),
         match_winrate=pd.NamedAgg(column="winner", aggfunc="mean"),
+        maps_won=pd.NamedAgg(column="maps_won", aggfunc="sum"),
+        rounds_won=pd.NamedAgg(column="rounds_won", aggfunc="sum"),
+        maps_lost=pd.NamedAgg(column="maps_lost", aggfunc="sum"),
+        rounds_lost=pd.NamedAgg(column="rounds_lost", aggfunc="sum")
     )
-    yearLongWinRate["map_winrate"] = matchesdf["maps_won"].sum() / (matchesdf["maps_won"].sum() + matchesdf["maps_lost"].sum())
-    yearLongWinRate["round_winrate"] = matchesdf["rounds_won"].sum() / (matchesdf["rounds_won"].sum() + matchesdf["rounds_lost"].sum())
+    yearLongWinRate["map_winrate"] = yearLongWinRate["maps_won"] / (yearLongWinRate["maps_won"] + yearLongWinRate["maps_lost"])
+    yearLongWinRate["round_winrate"] = yearLongWinRate["rounds_won"] / (yearLongWinRate["rounds_won"] + yearLongWinRate["rounds_lost"])
     return yearLongWinRate
 
 def getRosterSummary(df):
@@ -36,11 +42,13 @@ def consolidateMoves(dframe):
     df["date"] = pd.to_datetime(df["date"]).dt.date
     df["month"] = pd.to_datetime(df["date"]).dt.month
     df = df.groupby(["month", "team"], as_index=False).agg(team_id=("team_id","max"),date=("date", "min"),changes=("changeSeries", ", ".join))
-    df = df[df["changes"].str.match(r"(\+\w+, -\w+|-\w+, \+\w+)")]
+    df = df[df["changes"].str.match(r"([+-]\w+, ){1,}")]
+    df = df[df["changes"].str.match(r"(?=.*\+)(?=.*-)")]
     return df
 
 
 def addRosterIterations(matches, moves):
+    matches["date"] = pd.to_datetime(matches["date"])
     matches["date"] = pd.to_datetime(matches["date"].dt.date)
     sortedMoves = moves.sort_values(["team", "date"]).copy()
     sortedMoves["iteration"] = sortedMoves.groupby("team").cumcount() + 1
@@ -67,12 +75,18 @@ def iterationStats(df):
     return yearLongWinRate
 
 def plotStuff(df):
-    matchwin = df[:, ["Name", "iteration", "match_winrate"]].pivot_table(index="Name", columns="iteration", values="match_winrate")
-    mapwin = df[:, ["Name", "iteration", "map_winrate"]].pivot_table(index="Name", columns="iteration", values="map_winrate")
-    roundwin = df[:, ["Name", "iteration", "round_winrate"]].pivot_table(index="Name", columns="iteration", values="round_winrate")
+    matchwin = df.loc[:, ["Name", "iteration", "match_winrate"]].pivot_table(index="Name", columns="iteration", values="match_winrate")
+    mapwin = df.loc[:, ["Name", "iteration", "map_winrate"]].pivot_table(index="Name", columns="iteration", values="map_winrate")
+    roundwin = df.loc[:, ["Name", "iteration", "round_winrate"]].pivot_table(index="Name", columns="iteration", values="round_winrate")
     matchwin.plot(kind="bar").set_ylim(0, 1)
+    plt.title("Match Win Rates Across Iterations")
+    plt.savefig("graphs/matchwins.png")
     mapwin.plot(kind="bar").set_ylim(0, 1)
+    plt.title("Map Win Rates Across Iterations")
+    plt.savefig("graphs/mapwins.png")
     roundwin.plot(kind="bar").set_ylim(0, 1)
+    plt.title("Round Win Rates Across Iterations")
+    plt.savefig("graphs/roundwins.png")
 
 
 def main():
